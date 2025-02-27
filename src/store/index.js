@@ -19,6 +19,7 @@ export const MODO_CRONOMETRO = {
     }
 }
 
+// eslint-disable-next-line no-undef
 export const useCronometoStore = create((set) => ({
     modoCronometo: MODO_CRONOMETRO.FOCO,
     tempoEmSegundos: MODO_CRONOMETRO.tempoInicialEmSegundos,
