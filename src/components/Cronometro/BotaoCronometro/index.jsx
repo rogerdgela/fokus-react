@@ -8,14 +8,23 @@ import { useCronometroStore } from "../../../store";
 export default function BotaoCronometro() {
   const intervaloId = useCronometroStore((estado) => estado.intervaloId);
   const iniciarCronometro = useCronometroStore((estado) => estado.iniciarCronometro);
+  const pausarCronometro = useCronometroStore((estado) => estado.pausarCronometro);
 
   const textoIniciarOuPausar = intervaloId ? "Pausar" : "Iniciar";
   const iconeIniciarOuPausar = intervaloId ? pauseImg : play_arrowImg;
 
+  function iniciarOuPausarCronometro() {
+    if (intervaloId) {
+      pausarCronometro();
+    } else {
+      iniciarCronometro();
+    }
+  }
+
   return (
     <div className={styles["cronometer__primary-button-wrapper"]}>
       <button className={styles["cronometer__primary-button"]}
-        onClick={iniciarCronometro}
+        onClick={iniciarOuPausarCronometro}
       >
         <img className={styles["cronometer__primary-button-icon"]} src={iconeIniciarOuPausar} alt="" />
         <span>{textoIniciarOuPausar}</span>
